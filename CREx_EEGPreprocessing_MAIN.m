@@ -4,12 +4,12 @@
 %% SETUP CONFIGURATION STRUCTURE TO CONTAIN TRIGGER INFORMATION FOR CURRENT STUDY
 DIRmain = fullfile(filesep,'Users','bolger','Documents','work','Projects','Project-L2-SentenceProc',filesep);
 
-Tcfg = L2sent_make_trigstruct; 
+Tcfg = L2sent_make_trigstruct;    % Call of project-specific function to organize trigger codes. 
 
 %% CALL OF FUNCTION TO CARRY OUT EEG PREPROCESSING PIPELINE
 
-paramfile_nom = 'L2sentence_parameters.txt';      %Name of parameters file
-paramfile_path = fullfile(filesep,'Users','bolger','Documents','work','Projects','Project-L2-SentenceProc',paramfile_nom);   %full path to parameters file.
+paramfile_nom = 'XXX_parameters.txt';      %Name of parameters file - needs to changed
+paramfile_path = fullfile(filesep,'XXX','XXX','XXX','XXX','XXX','XXX',paramfile_nom);   %full path to parameters file.
 
 CREx_EEGPreprocessing_pipeline_simple(paramfile_path,Tcfg);        %Function call
 
