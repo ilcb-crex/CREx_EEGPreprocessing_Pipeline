@@ -4,18 +4,18 @@ function [peak_mag,peak_f] = CREx_SpectCalc_multitap(EEG,chansoi,freqs,foi,figin
 
 %% Define the parameters
 params.triallen=(EEG.times(end)/1000+abs(EEG.times(1)/1000));                       %length of the trial in seconds
-params.bw = 8;                                                                                              % (Hz) defines the width of a spectral peak for a sinusoid at fixed frequency. As such, this defines the multi-taper frequency resolution.
+params.bw = 3;                                                                                              % (Hz) defines the width of a spectral peak for a sinusoid at fixed frequency. As such, this defines the multi-taper frequency resolution.
 params.winsize=  params.triallen/1;                                                                  % window size is equal to the trial length
-params.winstep= params.winsize/2;                                                                  %default of no overlap ==> step the same size as the window length
-params.halfbw= params.bw/1;                                                                      % half bandwidth                                                                   %define the line frequencies
+params.winstep= params.winsize/1;                                                                  %default of no overlap ==> step the same size as the window length
+params.halfbw= params.bw/2;                                                                      % half bandwidth                                                                   %define the line frequencies
 params.fpass= freqs;
 params.pval = 0.05;                                                                                    %define the p-value for the detection of sinusoidal components
 params.chanlist = chansoi ;                                                                                %the number of channels to analyse
 params.Fs = EEG.srate;                                                                                % the sampling frequency
-params.tau = 3;   % 10Inf, smoothing parameter.                                                                                      %smoothing factor; Inf ==> no smoothing
+params.tau = 5;   % 10Inf, smoothing parameter.                                                                                      %smoothing factor; Inf ==> no smoothing
 params.pad= 0;                                                                                         %the padding factor to a power of 2 of the sliding window length. NFFT = 2^nextpow2(SlidingWinLen*(PadFactor+1)). e.g. For N = 500, if PadFactor = -1, we do not pad; if PadFactor = 0, we pad the FFT to 512 points, if PadFactor=1, we pad to 1024 points etc.'),
 params.movingwin =[params.winsize params.winstep];
-params.movingwinlen = params.movingwin(1)*params.Fs;   %window length in terms of sampling points
+params.movingwinlen = params.movingwin(1)*params.Fs; 
 
 pl=zeros(length(params.chanlist),1);      % Initialise the handles vector
 
