@@ -3,7 +3,7 @@ function [peak_mag,peak_f] = CREx_SpectCalc_multitap(EEG,chansoi,freqs,foi,figin
 % Needs to call the function : mtspectrumsegc().
 
 %% Define the parameters
-params.triallen=(EEG.times(end)/1000+abs(EEG.times(1)/1000));                       %length of the trial in seconds
+params.triallen=(floor(EEG.times(end)/8)/1000+abs(EEG.times(1)/1000));                       %length of the trial in seconds
 params.bw = 3;                                                                                              % (Hz) defines the width of a spectral peak for a sinusoid at fixed frequency. As such, this defines the multi-taper frequency resolution.
 params.winsize=  params.triallen/1;                                                                  % window size is equal to the trial length
 params.winstep= params.winsize/1;                                                                  %default of no overlap ==> step the same size as the window length
