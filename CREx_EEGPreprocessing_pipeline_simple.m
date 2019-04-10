@@ -239,8 +239,8 @@ function CREx_EEGPreprocessing_pipeline_simple(paramfile_path,Trigcfg)
         EEG = eeg_checkset( EEG );
         eeglab redraw
 
-        %% NEED TO ADD A FUNCTION THAT FIXES THE TRIGGERS CODES IN THE EVENT FIELD OF THE CURRENT EEG STRUCTURE
-        % Call of function here..
+        %% IN THIS SECTION THE TRIGGER CODES ARE INTEGRATED INTO THE EVENTS FIELD OF THE EEGLAB STRUCTURE
+        % THIS WILL EVENTUALLY BECOME A FUNCTION CALL, AS THIS CAN CHANGE DEPENDING ON THE DATA BEING PROCESSED.
 
        events_all = [EEG.event.type];
        event_trignames = cell(length(events_all),1);
