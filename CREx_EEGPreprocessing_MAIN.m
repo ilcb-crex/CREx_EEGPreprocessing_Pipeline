@@ -4,7 +4,7 @@
 %% SETUP CONFIGURATION STRUCTURE TO CONTAIN TRIGGER INFORMATION FOR CURRENT STUDY
 DIRmain = fullfile(filesep,'Users','bolger','Documents','work','Projects','Project-L2-SentenceProc',filesep);
 
-Tcfg = L2sent_make_trigstruct;    % Call of project-specific function to organize trigger codes. 
+Tcfg = L2sent_make_trigstruct(DIRmain);    % Call of project-specific function to organize trigger codes. 
 
 %% CALL OF FUNCTION TO CARRY OUT EEG PREPROCESSING PIPELINE
 
