@@ -153,7 +153,7 @@ function CREx_EEGPreprocessing_pipeline_simple(paramfile_path,Trigcfg)
         'winlength',20,'title','Visualise reference electrodes (10sec per window)')
 
         specnom_ref = fullfile(DIRsave_curr,strcat(fnom_filt,'-spectref'));
-        
+        CREx_SpectCalc_multitap(EEG,65:66,[1 40],[],specnom_ref,.1);      %Calculates spectrum on .1 of total dataset.
 
 
         %% RE-REFERENCE THE DATA TO THE ELECTRODES SPECIFIED IN THE PARAMETERS FILE.
@@ -177,9 +177,7 @@ function CREx_EEGPreprocessing_pipeline_simple(paramfile_path,Trigcfg)
         
         %% Calculate the spectra of all scalp electrodes using Multitaper.
         specnom_scalp = fullfile(DIRsave_curr,strcat(fnom_filt,'-spectscalp'));
-
-        CREx_SpectCalc_multitap(EEG,65:66,[1 40],[],specnom_ref);
-        CREx_SpectCalc_multitap(EEG,1:64,[1 40],[],specnom_scalp);
+        CREx_SpectCalc_multitap(EEG,1:64,[1 40],[],specnom_scalp,.1);     %Calculates spectrum on .1 of total dataset.
 
         %% DETECT POSSIBLE BAD ELECTRODES AUTOMATICALLY VIA EEGLAB KURTOSIS MEASURE.
         % Those electrodes with a kurtosis value >5 (z-score) are marked as
